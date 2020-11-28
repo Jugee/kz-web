@@ -1,12 +1,17 @@
 import React, {useState} from 'react'
 import {Container, makeStyles} from "@material-ui/core"
 import {CheckCircleOutlined} from "@ant-design/icons"
-import { Card } from 'antd';
+import {Col, Row } from 'antd';
+import Modal from 'antd/lib/modal/Modal';
+
 
 const useStyles = makeStyles(() => ({
     headerTitle: {
         padding: 86,
-        backgroundImage: "url(/image_slider1.jpg)",
+        backgroundImage: "url(/trash3.jpg)",
+        backgroundAttachment: "fixed",
+        backgroundSize: "120%",
+        backgroundRepeat: "no-repeat",
         minHeight:"400px",
         color: "#ffffff"
     },
@@ -77,14 +82,15 @@ const useStyles = makeStyles(() => ({
         color:"#ffffff"
     },
     introductionBtn: {
-        border: "3px solid #7788c4",
+        border: "2px solid #7788c4",
+        fontSize:"0.8rem",
         display:"flex",
         alignItems: "center",
         justifyContent:"center",
         margin: "28px 0px 24px 0px",
         borderRadius: "30px",
-        width: "168px",
-        padding: "12px",
+        width: "146px",
+        padding: "10px",
         textAlign:"center",
         "&:hover": {
             cursor: "pointer",
@@ -113,15 +119,22 @@ const useStyles = makeStyles(() => ({
        }
     },
     serviceCardTitle:{
-        fontSize:"1.2rem",
-        padding: "15px 15px 0px 15px",
+        display:"flex",
+        alignItems:"center",
+        background:"#0059a2",
+        color: "#ffffff",
+        height: "58px",
+        fontSize:"0.8rem",
+        textTransform: "uppercase",
+        padding: "15px 15px 15px 15px",
         letterSpacing: "2px", 
-        fontWeight:"400"
+        fontWeight:"400",
+        lineHeight: "1.5"
     },
     serviceCardText: {
         fontSize: "0.8rem",
         padding: "0px 15px 0px 15px",
-        fontWeight:"200"
+        fontWeight:500
     },
     sliderText: {
         background: "rgba(119, 136, 196, 0.8)", 
@@ -129,14 +142,15 @@ const useStyles = makeStyles(() => ({
         borderRadius: "10px"
     },
     aboutBtn: {
-        border: "3px solid #7788c4",
+        border: "2px solid #7788c4",
         display:"flex",
+        fontSize:"0.8rem",
         alignItems: "center",
         justifyContent:"center",
         margin: "28px 0px 24px 0px",
         borderRadius: "30px",
-        width: "188px",
-        padding: "12px",
+        minWidth: "146px",
+        padding: "10px",
         textAlign:"center",
         "&:hover": {
             cursor: "pointer",
@@ -147,26 +161,61 @@ const useStyles = makeStyles(() => ({
 
 }))
 
-export default function Content() {
+export default function Content(props) {
     const classes = useStyles()
-    const { Meta } = Card;
-    const [darsan, setDarsan] = useState(false);
+    const [darsan, setDarsan] = useState(true);
+    const [darsanTeam, setDarsanTeam] = useState(false);
+    const [visibleIntorduction, setVisibleIntroduction] = useState(false)
+    const [visibleAboutUs, setVisibleAboutUs] = useState(false)
+    const [visibleAboutUsTeam, setVisibleAboutUsTeam] = useState(false)
 
-    function darav() {
+    function daravCompany() {
         if(darsan === false ){
             setDarsan(true)
+            setDarsanTeam(false)
         }else {
             setDarsan(false) 
+            setDarsanTeam(true) 
         }
     }
+    function daravTeam() {
+        if(darsanTeam === false ){
+            setDarsanTeam(true)
+            setDarsan(false)
+        }else {
+            setDarsanTeam(false) 
+            setDarsan(true)
+        }
+    }
+
+    const showModal = () => {
+        setVisibleIntroduction(true)
+      };
+    const  handleCancel = e => {
+        setVisibleIntroduction(false)
+      };
+    const showModalAboutUs = () => {
+        setVisibleAboutUs(true)
+      };
+    const  handleCancelAbouUs = e => {
+        setVisibleAboutUs(false)
+      };
+    const showModalAboutUsTeam = () => {
+        setVisibleAboutUsTeam(true)
+    };
+    const  handleCancelAbouUsTeam = e => {
+        setVisibleAboutUsTeam(false)
+    };
+    
+
     return (
-        <div id="homePage">
+        <div id="homePage" style={{width: "100%"}}>
             <div className={classes.headerTitle} >
                 <Container>
-                    <img src={"/icons/logo.jpg"} width="68px" alt="logo"/>
-                    <h1 style={{fontWeight: "400", fontSize:"3rem" }}>{'"КАРКАЗ ЗУРАГ ХХК"'}</h1>
+                    <img src={"/icons/logoVector.svg"} width="68px" alt="logo"/>
+                    <h1 style={{fontWeight: "400", fontSize:"3rem", color:"#ffffff", margin: "15px 0px 15px 0px"}}>{props.strings.headerMainTitle}</h1>
                     <p style={{fontSize: "0.8rem"}}>
-                    ЗУРАГ ТӨСӨЛ / ХОТ ТӨЛӨВЛӨЛТ / ЗӨВЛӨХ ҮЙЛЧИЛГЭЭ / ТӨСӨЛ ХЭРЭГЖҮҮЛЭЛТ
+                        {props.strings.headerMainTitleSub}
                     </p>
                 </Container>
             </div>
@@ -174,100 +223,97 @@ export default function Content() {
             <div className={classes.chapterMain} id="indroductionPage">
                 <Container style={{ display: "flex", flexDirection: "column",  alignItems: "center", }}>
                     <div className={classes.introductionTitle}>
-                        <p className={classes.chapterTitleMainText} >{'ТАНИЛЦУУЛГА'}</p>
-                        <p className={classes.chapterTitleSubMini} >{"ЯАГААД БИДНИЙГ СОНГОХ ВЭ ?"}</p> 
+                        <p className={classes.chapterTitleMainText} >{props.strings.taniltsuulga}</p>
+                        <p className={classes.chapterTitleSubMini} >{props.strings.yagadBidniihSongohVe}</p> 
                     </div>
-                    <div> 
+                    <div>
                         <img src={"/icons/line.svg"} height="14px" alt="line"/>
                     </div>
-                    <div className={classes.introductionImageText}>
-                        <div style={{width: "60%"}}>
+                    <Row className={classes.introductionImageText}>
+                        <Col style={{width: "60%"}}>
                             <img src={"/image_slider2.jpg"} width="100%" alt="line"/>
-                        </div>
-                        <div className={classes.introductionTextAbout}>
-                        <p className={classes.introductionTextContenHeader}>{"ЯАГААД БИДНИЙГ СОНГОХ ВЭ ?"}</p> 
-                        <p>Бид үйл ажиллагаандаа олон улсад хүлээн зөвшөөрөгдсөн барилгын зураг
-                            төсөл, орчин үеийн хэрэгцээ шаардлагийн хангаж шинэ техник техногийг 
-                            нэвтрүүлэхийн төлөө салбартаа мэргэшсэн чадавхитай багийг бүрдүүлж, 
-                            хууль дүрэм норм стандартыг чандлан дээдэлсэн, нийгмийн хамт олон 
-                            байхыг зорьж ажиллаж байна.
-                        </p>
-                        <p>Онцлог шинж чанарууд</p>
-                        <CheckCircleOutlined className={classes.introductionTextLiTagIcon}/>{"Барилгын иж бүрэн зураг төсөл боловсруулдаг ууган"} <br/>
-                        <CheckCircleOutlined className={classes.introductionTextLiTagIcon}/>{"Cалбартаа туршлагаараа тэргүүлэгч "} <br/>
-                        <CheckCircleOutlined className={classes.introductionTextLiTagIcon}/>{"Барилгын иж бүрэн зураг төсөл боловсруулдаг "} <br/>
-                        <div style={{display:"flex", justifyContent: "center", }}>
-                            <div className={classes.introductionBtn}>{"Цааш унших"}</div>
-                        </div>
-                        </div>
-                    </div>
+                        </Col>
+                        <Col className={classes.introductionTextAbout}>
+                            <p className={classes.introductionTextContenHeader}>{props.strings.yagadBidniihSongohVe}</p> 
+                            <p>
+                                {props.strings.taniltsuulgaText}
+                            </p>
+                            <p style={{textTransform: "uppercase"}}>{props.strings.ontslogChanar}</p>
+                            <CheckCircleOutlined className={classes.introductionTextLiTagIcon}/>{props.strings.ontslogChanar1} <br/>
+                            <CheckCircleOutlined className={classes.introductionTextLiTagIcon}/>{props.strings.ontslogChanar2} <br/>
+                            <CheckCircleOutlined className={classes.introductionTextLiTagIcon}/>{props.strings.ontslogChanar3} <br/>
+                            <div style={{display:"flex", justifyContent: "center", }}>
+                                <div className={classes.introductionBtn} onClick={showModal}>{props.strings.tsaashUnshihBtnText}</div>
+                            </div>
+                        </Col>
+                    </Row>
                 </Container>
             </div>
             {/* -------------------------------------------- Service -----------------------------------------------*/}
             <div className={classes.chapterMain} id="servicePage">
                 <Container style={{ display: "flex", flexDirection: "column",  alignItems: "center", }}>
                     <div className={classes.introductionTitle}>
-                        <p className={classes.chapterTitleMainText} >{'ҮЙЛЧИЛГЭЭ'}</p>
-                        <p className={classes.chapterTitleSubMini} >{"БИД ТАНД ЮУ ХИЙЖ ӨГЧ ЧАДАХ ВЭ ?"}</p> 
+                        <p className={classes.chapterTitleMainText} >{props.strings.uilchilgee}</p>
+                        <p className={classes.chapterTitleSubMini} >{props.strings.uilchilgeeSubTitle}</p> 
                     </div>
                     <div> 
                         <img src={"/icons/line.svg"} height="14px" alt="line"/>
                     </div>
-                    <div className={classes.chapterImageText}>
-                        <div className={classes.serviceCard}>                            
+                    <Row className={classes.chapterImageText}>
+                        <Col className={classes.serviceCard}>
                             <img src={"/ErdenetCity.png"} alt="John" style={{width:"100%", height:"50%"}}/>
-                            <h3 className={classes.serviceCardTitle}>Ерөнхий төлөвлөгөөний зураг төсөл</h3>
+                            <h3 className={classes.serviceCardTitle}>{props.strings.uilchilgee1}</h3>
                             <p className={classes.serviceCardText}>Хот төлөвлөлт, бүс нутгийн хөгжлийн төсөл суурь судалгаа, дэд бүтцийн хөгжлийн төсөл, ерөнхий төлөвлөгөө.</p>
-                        </div>
-                        <div className={classes.serviceCard}>
+                        </Col>
+                        <Col className={classes.serviceCard}>
                             <img src={"/architectureBlack.jpg"} alt="John" style={{width:"100%", height: "50%"}} />
-                            <h3 className={classes.serviceCardTitle}>Архитектур төлөвлөлт</h3>
+                            <h3 className={classes.serviceCardTitle}>{props.strings.uilchilgee2}</h3>
                             <p className={classes.serviceCardText}>Интерьер , экстерьер дизайны зураг төсөл, материалын түүвэр тооцоо.</p>
-                        </div>
-                        <div className={classes.serviceCard}>
+                        </Col>
+                        <Col className={classes.serviceCard}>
                             <img src={"/apartment17.jpg"} alt="John" style={{width:"100%", height: "50%"}} />
-                            <h3 className={classes.serviceCardTitle}>Иж бүрэн ажлын зураг төсөл</h3>
+                            <h3 className={classes.serviceCardTitle}>{props.strings.uilchilgee3}</h3>
                             <p className={classes.serviceCardText}>16 хүртэл давхар барилга байгууламжийн ерөнхий төлөвлөгөө тохижилт, өндөржилт, барилга архитектур, эскиз зураг, барилга бүтээц, тооцоо.</p>
-                        </div>
-                        <div className={classes.serviceCard}>
+                        </Col>
+                        <Col className={classes.serviceCard}>
                             <img src={"/11.jpg"} alt="John" style={{width:"100%", height: "50%"}} />
-                            <h3 className={classes.serviceCardTitle}>Инженер хангамж</h3>
+                            <h3 className={classes.serviceCardTitle}>{props.strings.uilchilgee4}</h3>
                             <ul className={classes.serviceCardText} style={{marginLeft: 15,}}>
                                 <li> Халаалт, агаар сэлгэлт </li>
                                 <li> Усан хангамж </li>
                                 <li> Хүчит төхөөрөмжийн зураг төсөл </li>
                                 <li> Мэдээлэл холбоо, сүлжээний зураг төсөл </li>
                             </ul>
-                        </div>
-                    </div>
-                    <div className={classes.chapterImageText}>
-                        <div className={classes.serviceCard}>
+                        </Col>
+                    </Row>
+                    <Row className={classes.chapterImageText}>
+                        <Col className={classes.serviceCard}>
                             <img src={"/manufacture.jpg"} alt="John" style={{width:"100%", height: "50%"}} />
-                            <h3 className={classes.serviceCardTitle}>Үйлдвэрийн барилгын иж бүрэн зураг төсөл</h3>
+                            <h3 className={classes.serviceCardTitle}>{props.strings.uilchilgee5}</h3>
                             <ul className={classes.serviceCardText} style={{marginLeft: 15,}}>
                                 <li> Хүнд  үйлдвэрийн </li>
                                 <li> Хөнгөн үйлдвэрийн </li>
                             </ul>
-                        </div>
-                        <div className={classes.serviceCard}>
+                        </Col>
+                        <Col className={classes.serviceCard}>
                             <img src={"/consulting.jpg"} alt="John" style={{width:"100%", height: "50%"}} />
-                            <h3 className={classes.serviceCardTitle}>Зөвлөх үйлчилгээ</h3>
+                            <h3 className={classes.serviceCardTitle}>{props.strings.uilchilgee6}</h3>
                             <p className={classes.serviceCardText}>Зураг төсөл, барилга угсралт, инженерийн шугам сүлжээний зөвлөх үйлчилгээ. </p>
-                        </div>
-                        <div className={classes.serviceCard}>
+                        </Col>
+                        <Col className={classes.serviceCard}>
                             <img src={"/budget1.jpg"} alt="John" style={{width:"100%", height: "50%"}} />
-                            <h3 className={classes.serviceCardTitle}>Барилгын төсөв</h3>
+                            <h3 className={classes.serviceCardTitle}>{props.strings.uilchilgee7}</h3>
                             <p className={classes.serviceCardText}>Барилга байгууламж, гадна шугам сүлжээний нэгдсэн төсөв.</p>
-                        </div>
-                    </div>
+                        </Col>
+                    </Row>
                 </Container>
             </div>
-             {/* -------------------------------------------- Projects -----------------------------------------------*/}
-             <div className={classes.chapterMainProjects} id="projectsPage">
+            {/* -------------------------------------------- Projects -----------------------------------------------*/}
+            <div className={classes.chapterMainProjects} id="projectsPage">
                 <Container style={{ display: "flex", flexDirection: "column",  alignItems: "center", }}>
                     <div className={classes.introductionTitle}>
-                        <p className={classes.chapterTitleMainText} >{'ТӨСЛҮҮД'}</p>
-                        <p className={classes.chapterTitleSubMini} >{"ХИЙЖ ГҮЙЦЭТГЭСЭН ТӨСЛҮҮД"}</p> 
+                        <p className={classes.chapterTitleMainText} >{props.strings.tusuluud}</p>
+                        <p className={classes.chapterTitleSubMini} >{props.strings.tusulSubTitle}</p> 
                     </div>
                     <div> 
                         <img src={"/icons/line.svg"} height="14px" alt="line"/>
@@ -307,7 +353,7 @@ export default function Content() {
                                         </div>
                                     </div>
                                 </div>
-                               
+                            
                             </div>
                             <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                                 <span className="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -319,46 +365,52 @@ export default function Content() {
                             </a>
                         </div>
                     </div>
-                   
+                
                 </Container>
             </div>
-             {/* -------------------------------------------- About -----------------------------------------------*/}
-             <div className={classes.chapterMain} id="aboutPage">
+            {/* -------------------------------------------- About -----------------------------------------------*/}
+            <div className={classes.chapterMain} id="aboutPage">
                 <Container style={{ display: "flex", flexDirection: "column",  alignItems: "center", }}>
                     <div className={classes.introductionTitle}>
-                        <p className={classes.chapterTitleMainText} >{'БИДНИЙ ТУХАЙ'}</p>
-                        <p className={classes.chapterTitleSubMini} >{"МАНАЙ ХАМТ ОЛОН БОЛОН КОМПАНИТАЙ ТАНИЛЦАНА УУ"}</p> 
+                        <p className={classes.chapterTitleMainText} >{props.strings.bidniiTuhai}</p>
+                        <p className={classes.chapterTitleSubMini} >{props.strings.bidniiTuhaiSubTitle}</p> 
                     </div>
                     <div> 
                         <img src={"/icons/line.svg"} height="14px" alt="line"/>
                     </div>
-                    <div style={{display:"flex", width: "35%", justifyContent:"space-between", justifyItems:"space-between"}}>
-                        <div className={classes.aboutBtn} onClick={() => darav()} style={{ background: darsan ? "#7788c4" : ""}}>{"КОМПАНИЙ ТУХАЙ"}</div>
-                        <div className={classes.aboutBtn} onClick={() => darav()} style={{ background: darsan ? "#7788c4" : ""}}>{"МАНАЙ ХАМТ ОЛОН"}</div>
-                    </div>
+                    <Row style={{display:"flex", width: "30%", justifyContent:"space-between", justifyItems:"space-between"}}>
+                        <Col className={classes.aboutBtn} onClick={() => daravCompany()} style={{ background: darsan ? "#7788c4" : ""}}>{props.strings.kampaniiTuhai}</Col>
+                        <Col className={classes.aboutBtn} onClick={() => daravTeam()} style={{ background: darsanTeam ? "#7788c4" : ""}}>{props.strings.manaiHamtOlon}</Col>
+                    </Row>
                     <div className={classes.introductionImageText}>
                         <div style={{width: "60%"}}>
                             <img src={"/group-businesspeople.jpg"} width="100%" alt="line"/>
                         </div>
-                        <div className={classes.introductionText}>
-                            <p className={classes.introductionTextContenHeader} >{"КОМПАНИЙ ТУХАЙ"}</p> 
+                        {darsan ? <div className={classes.introductionText}>
+                            <p className={classes.introductionTextContenHeader} >{props.strings.kampaniiTuhai}</p> 
+                            <p style={{textAlign:"justify"}}>
+                                {props.strings.kampaniiTuhaiDelgerengui}
+                            </p>
                             <p>
-                                “KAPKAC ЗУРАГ" XXK нь 1989 онд байгуулагдсан. Барилгын иж vpэн зураг тесел 
-                                боловсруулдаг ууган компаниудын нэг билээ. Манай компани нь хувийн хэвшил,
-                                терийн болон гадаадын байгууллагуудтай хамтран олон теслуудийг амжилттай 
-                                хэрэгжуулж, Улаанбаатар хот, орон нутгуудад манай боловсруулсан зураг 
-                                тecлvvд орон сууцны хороолол, хотхон, эмнэлэг, сургуууль, цэцэрлэг, зочид 
-                                буудал уйлдвэр, худалдаа vилчилгээний зориулалтай барилга байгууламжууд
-                                сvндэрлэн боссоор байна.
+                                ...............
+                            </p>
+                            <div style={{display:"flex", justifyContent: "center", }}>
+                                <div className={classes.introductionBtn} onClick={showModalAboutUs}>{props.strings.tsaashUnshihBtnText}</div>
+                            </div>
+                        </div> : <div className={classes.introductionText}>
+                            <p className={classes.introductionTextContenHeader} >{props.strings.manaiHamtOlon}</p> 
+                            <p style={{textAlign:"justify"}}>
+                                {"Манай хамт олон ....."}
                             </p>
                             <p>
                                 Барилга байгууламжийн зураг тесел хот телевлелт, хэсэгчилсэн еренхий 
                                 телевлегее, архитектур...
                             </p>
                             <div style={{display:"flex", justifyContent: "center", }}>
-                                <div className={classes.introductionBtn}>{"Цааш унших"}</div>
+                                <div className={classes.introductionBtn} onClick={showModalAboutUsTeam}>{props.strings.tsaashUnshihBtnText}</div>
                             </div>
-                        </div>
+                        </div> }
+                        
                     </div>
                 </Container>
             </div>
@@ -366,18 +418,75 @@ export default function Content() {
             <div className={classes.chapterMain} id="callPage">
                 <Container style={{ display: "flex", flexDirection: "column",  alignItems: "center", }}>
                     <div className={classes.introductionTitle}>
-                        <p className={classes.chapterTitleMainText} >{'ХОЛБОО БАРИХ'}</p>
-                        <p className={classes.chapterTitleSubMini} >{"БАЙРШИЛ"}</p> 
+                        <p className={classes.chapterTitleMainText} >{props.strings.holbooBarih}</p>
+                        <p className={classes.chapterTitleSubMini} >{props.strings.holbooBarihSubTitle}</p> 
                     </div>
                     <div> 
                         <img src={"/icons/line.svg"} height="14px" alt="line"/>
                     </div>
                     <div style={{width: "100%", marginTop:"15px"}}>
-                        <iframe width="100%" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=ulaanbaatar&t=&z=11&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                        <iframe title="map" width="100%" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=ulaanbaatar&t=&z=11&ie=UTF8&iwloc=&output=embed" frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0"></iframe>
                     </div>
                 </Container>
                 
             </div>
+            {/* -------------- Intorduction ---------------------*/}
+            <Modal
+                title={props.strings.yagadBidniihSongohVe}
+                visible={visibleIntorduction}
+                onCancel={handleCancel}
+                footer={null}
+                width={700}
+            >
+                <p>Бид үйл ажиллагаандаа олон улсад хүлээн зөвшөөрөгдсөн барилгын зураг
+                    төсөл, орчин үеийн хэрэгцээ шаардлагийн хангаж шинэ техник техногийг 
+                    нэвтрүүлэхийн төлөө салбартаа мэргэшсэн чадавхитай багийг бүрдүүлж, 
+                    хууль дүрэм норм стандартыг чандлан дээдэлсэн, нийгмийн хамт олон 
+                    байхыг зорьж ажиллаж байна.
+                </p>
+                <p>Онцлог шинж чанарууд</p>
+                <ul>
+                    <li>{"Барилгын иж бүрэн зураг төсөл боловсруулдаг ууган"}</li>
+                    <li>{"Cалбартаа туршлагаараа тэргүүлэгч "}</li>
+                    <li>{"Барилгын иж бүрэн зураг төсөл боловсруулдаг "}</li>
+                </ul>
+            </Modal>
+            {/* -------------- AboutUs ---------------------*/}
+            <Modal
+                title={props.strings.kampaniiTuhai}
+                visible={visibleAboutUs}
+                onCancel={handleCancelAbouUs}
+                footer={null}
+                width={700}
+            >
+                <p>Бид үйл ажиллагаандаа олон улсад хүлээн зөвшөөрөгдсөн барилгын зураг
+                    төсөл, орчин үеийн хэрэгцээ шаардлагийн хангаж шинэ техник техногийг 
+                    нэвтрүүлэхийн төлөө салбартаа мэргэшсэн чадавхитай багийг бүрдүүлж, 
+                    хууль дүрэм норм стандартыг чандлан дээдэлсэн, нийгмийн хамт олон 
+                    байхыг зорьж ажиллаж байна.
+                </p>
+                <p>Онцлог шинж чанарууд</p>
+                <ul>
+                    <li>{"Барилгын иж бүрэн зураг төсөл боловсруулдаг ууган"}</li>
+                    <li>{"Cалбартаа туршлагаараа тэргүүлэгч "}</li>
+                    <li>{"Барилгын иж бүрэн зураг төсөл боловсруулдаг "}</li>
+                </ul>
+            </Modal>
+            {/* -------------- AboutUs ---------------------*/}
+            <Modal
+                title={props.strings.manaiHamtOlon}
+                visible={visibleAboutUsTeam}
+                onCancel={handleCancelAbouUsTeam}
+                footer={null}
+                width={700}
+            >
+                <p>Бид үйл ажиллагаандаа олон улсад хүлээн зөвшөөрөгдсөн барилгын зураг
+                    төсөл, орчин үеийн хэрэгцээ шаардлагийн хангаж шинэ техник техногийг 
+                    нэвтрүүлэхийн төлөө салбартаа мэргэшсэн чадавхитай багийг бүрдүүлж, 
+                    хууль дүрэм норм стандартыг чандлан дээдэлсэн, нийгмийн хамт олон 
+                    байхыг зорьж ажиллаж байна.
+                </p>
+            </Modal>
         </div>
     )
 }
