@@ -8,7 +8,7 @@ import Modal from 'antd/lib/modal/Modal';
 const useStyles = makeStyles(() => ({
     headerTitle: {
         padding: 86,
-        backgroundImage: "url(/trash3.jpg)",
+        backgroundImage: "url(image/headerCover.jpg)",
         backgroundAttachment: "fixed",
         backgroundSize: "120%",
         backgroundRepeat: "no-repeat",
@@ -212,7 +212,7 @@ export default function Content(props) {
         <div id="homePage" style={{width: "100%"}}>
             <div className={classes.headerTitle} >
                 <Container>
-                    <img src={"/icons/logoVector.svg"} width="68px" alt="logo"/>
+                    <img src={"/image/logoVector.svg"} width="68px" alt="logo"/>
                     <h1 style={{fontWeight: "400", fontSize:"3rem", color:"#ffffff", margin: "15px 0px 15px 0px"}}>{props.strings.headerMainTitle}</h1>
                     <p style={{fontSize: "0.8rem"}}>
                         {props.strings.headerMainTitleSub}
@@ -227,11 +227,11 @@ export default function Content(props) {
                         <p className={classes.chapterTitleSubMini} >{props.strings.yagadBidniihSongohVe}</p> 
                     </div>
                     <div>
-                        <img src={"/icons/line.svg"} height="14px" alt="line"/>
+                        <img src={"/image/line.svg"} height="14px" alt="line"/>
                     </div>
                     <Row className={classes.introductionImageText}>
                         <Col style={{width: "60%"}}>
-                            <img src={"/image_slider2.jpg"} width="100%" alt="line"/>
+                            <img src={"image/introCover.png"} width="100%" alt="line"/>
                         </Col>
                         <Col className={classes.introductionTextAbout}>
                             <p className={classes.introductionTextContenHeader}>{props.strings.yagadBidniihSongohVe}</p> 
@@ -257,26 +257,26 @@ export default function Content(props) {
                         <p className={classes.chapterTitleSubMini} >{props.strings.uilchilgeeSubTitle}</p> 
                     </div>
                     <div> 
-                        <img src={"/icons/line.svg"} height="14px" alt="line"/>
+                        <img src={"/image/line.svg"} height="14px" alt="line"/>
                     </div>
                     <Row className={classes.chapterImageText}>
                         <Col className={classes.serviceCard}>
-                            <img src={"/ErdenetCity.png"} alt="John" style={{width:"100%", height:"50%"}}/>
+                            <img src={"image/service1.jpg"} alt="John" style={{width:"100%", height:"50%"}}/>
                             <h3 className={classes.serviceCardTitle}>{props.strings.uilchilgee1}</h3>
                             <p className={classes.serviceCardText}>Хот төлөвлөлт, бүс нутгийн хөгжлийн төсөл суурь судалгаа, дэд бүтцийн хөгжлийн төсөл, ерөнхий төлөвлөгөө.</p>
                         </Col>
                         <Col className={classes.serviceCard}>
-                            <img src={"/architectureBlack.jpg"} alt="John" style={{width:"100%", height: "50%"}} />
+                            <img src={"image/service2.jpg"} alt="John" style={{width:"100%", height: "50%"}} />
                             <h3 className={classes.serviceCardTitle}>{props.strings.uilchilgee2}</h3>
                             <p className={classes.serviceCardText}>Интерьер , экстерьер дизайны зураг төсөл, материалын түүвэр тооцоо.</p>
                         </Col>
                         <Col className={classes.serviceCard}>
-                            <img src={"/apartment17.jpg"} alt="John" style={{width:"100%", height: "50%"}} />
+                            <img src={"image/service3.jpg"} alt="John" style={{width:"100%", height: "50%"}} />
                             <h3 className={classes.serviceCardTitle}>{props.strings.uilchilgee3}</h3>
                             <p className={classes.serviceCardText}>16 хүртэл давхар барилга байгууламжийн ерөнхий төлөвлөгөө тохижилт, өндөржилт, барилга архитектур, эскиз зураг, барилга бүтээц, тооцоо.</p>
                         </Col>
                         <Col className={classes.serviceCard}>
-                            <img src={"/11.jpg"} alt="John" style={{width:"100%", height: "50%"}} />
+                            <img src={"image/service4.jpg"} alt="John" style={{width:"100%", height: "50%"}} />
                             <h3 className={classes.serviceCardTitle}>{props.strings.uilchilgee4}</h3>
                             <ul className={classes.serviceCardText} style={{marginLeft: 15,}}>
                                 <li> Халаалт, агаар сэлгэлт </li>
@@ -288,7 +288,7 @@ export default function Content(props) {
                     </Row>
                     <Row className={classes.chapterImageText}>
                         <Col className={classes.serviceCard}>
-                            <img src={"/manufacture.jpg"} alt="John" style={{width:"100%", height: "50%"}} />
+                            <img src={"image/service5.jpg"} alt="John" style={{width:"100%", height: "50%"}} />
                             <h3 className={classes.serviceCardTitle}>{props.strings.uilchilgee5}</h3>
                             <ul className={classes.serviceCardText} style={{marginLeft: 15,}}>
                                 <li> Хүнд  үйлдвэрийн </li>
@@ -296,12 +296,12 @@ export default function Content(props) {
                             </ul>
                         </Col>
                         <Col className={classes.serviceCard}>
-                            <img src={"/consulting.jpg"} alt="John" style={{width:"100%", height: "50%"}} />
+                            <img src={"image/service6.jpg"} alt="John" style={{width:"100%", height: "50%"}} />
                             <h3 className={classes.serviceCardTitle}>{props.strings.uilchilgee6}</h3>
                             <p className={classes.serviceCardText}>Зураг төсөл, барилга угсралт, инженерийн шугам сүлжээний зөвлөх үйлчилгээ. </p>
                         </Col>
                         <Col className={classes.serviceCard}>
-                            <img src={"/budget1.jpg"} alt="John" style={{width:"100%", height: "50%"}} />
+                            <img src={"image/service7.jpg"} alt="John" style={{width:"100%", height: "50%"}} />
                             <h3 className={classes.serviceCardTitle}>{props.strings.uilchilgee7}</h3>
                             <p className={classes.serviceCardText}>Барилга байгууламж, гадна шугам сүлжээний нэгдсэн төсөв.</p>
                         </Col>
@@ -316,7 +316,7 @@ export default function Content(props) {
                         <p className={classes.chapterTitleSubMini} >{props.strings.tusulSubTitle}</p> 
                     </div>
                     <div> 
-                        <img src={"/icons/line.svg"} height="14px" alt="line"/>
+                        <img src={"/image/line.svg"} height="14px" alt="line"/>
                     </div>
                     <div className={classes.introductionImageText}>
                         <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
@@ -327,7 +327,7 @@ export default function Content(props) {
                             </ol>
                             <div className="carousel-inner">
                                 <div className="carousel-item active" style={{width:"900px", height:"500px"}}>
-                                    <img className="d-block w-100" src="/projects/ErdenetCity.png" alt="First slide" />
+                                    <img className="d-block w-100" src="/image/slider1.jpg" alt="First slide" />
                                     <div className="carousel-caption d-none d-md-block">
                                         <div className={classes.sliderText}>
                                             <h5>ОРХОН АЙМАГ, ЭРДЭНЭТ ХОТ</h5>
@@ -336,7 +336,7 @@ export default function Content(props) {
                                     </div>
                                 </div>
                                 <div className="carousel-item" style={{width:"900px", height:"500px"}}>
-                                    <img className="d-block w-100" src="/projects/olonUlsProject.png" alt="First slide" />
+                                    <img className="d-block w-100" src="/image/slider2.jpg" alt="First slide" />
                                     <div className="carousel-caption d-none d-md-block">
                                         <div className={classes.sliderText}>
                                             <h5>БНХАУ-ЫН "HAHN ARCHITECUAL DESIGN" КОМПАНИТАЙ ХАМТАРСАН ТӨСӨЛ</h5>
@@ -345,11 +345,11 @@ export default function Content(props) {
                                     </div>
                                 </div>
                                 <div className="carousel-item" style={{width:"900px", height:"500px"}}>
-                                    <img className="d-block w-100" src="/projects/erdenetProject2.png" alt="First slide" />
+                                    <img className="d-block w-100" src="/image/slider3.jpg" alt="First slide" />
                                     <div className="carousel-caption d-none d-md-block">
                                         <div className={classes.sliderText}>
-                                            <h5>ОРХОН АЙМАГ, ЭРДЭНЭТ ХОТ</h5>
-                                            <p>7-р хорооллын ерөнхий төлөвлөгөө</p>
+                                            <h5>ХАН-УУЛ ДҮҮРЭГ 10-Р ХОРОО</h5>
+                                            <p>Буянт ухаа-2  хороолол</p>
                                         </div>
                                     </div>
                                 </div>
@@ -376,7 +376,7 @@ export default function Content(props) {
                         <p className={classes.chapterTitleSubMini} >{props.strings.bidniiTuhaiSubTitle}</p> 
                     </div>
                     <div> 
-                        <img src={"/icons/line.svg"} height="14px" alt="line"/>
+                        <img src={"/image/line.svg"} height="14px" alt="line"/>
                     </div>
                     <Row style={{display:"flex", width: "30%", justifyContent:"space-between", justifyItems:"space-between"}}>
                         <Col className={classes.aboutBtn} onClick={() => daravCompany()} style={{ background: darsan ? "#7788c4" : ""}}>{props.strings.kampaniiTuhai}</Col>
@@ -384,7 +384,7 @@ export default function Content(props) {
                     </Row>
                     <div className={classes.introductionImageText}>
                         <div style={{width: "60%"}}>
-                            <img src={"/group-businesspeople.jpg"} width="100%" alt="line"/>
+                            <img src={"image/aboutCover.jpg"} width="100%" alt="line"/>
                         </div>
                         {darsan ? <div className={classes.introductionText}>
                             <p className={classes.introductionTextContenHeader} >{props.strings.kampaniiTuhai}</p> 
@@ -422,7 +422,7 @@ export default function Content(props) {
                         <p className={classes.chapterTitleSubMini} >{props.strings.holbooBarihSubTitle}</p> 
                     </div>
                     <div> 
-                        <img src={"/icons/line.svg"} height="14px" alt="line"/>
+                        <img src={"/image/line.svg"} height="14px" alt="line"/>
                     </div>
                     <div style={{width: "100%", marginTop:"15px"}}>
                         <iframe title="map" width="100%" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=ulaanbaatar&t=&z=11&ie=UTF8&iwloc=&output=embed" frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0"></iframe>
