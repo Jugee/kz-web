@@ -120,6 +120,7 @@ const useStyles = makeStyles(() => ({
     },
     serviceCardTitle:{
         display:"flex",
+        justifyContent: "center",
         alignItems:"center",
         background:"#0059a2",
         color: "#ffffff",
@@ -155,7 +156,6 @@ const useStyles = makeStyles(() => ({
         "&:hover": {
             cursor: "pointer",
             background:"#7788c4",
-
         }
     }
 
@@ -261,49 +261,49 @@ export default function Content(props) {
                     </div>
                     <Row className={classes.chapterImageText}>
                         <Col className={classes.serviceCard}>
-                            <img src={"image/service1.jpg"} alt="John" style={{width:"100%", height:"50%"}}/>
+                            <img src={"image/service1.jpg"} alt="service1" style={{width:"100%", height:"50%"}}/>
                             <h3 className={classes.serviceCardTitle}>{props.strings.uilchilgee1}</h3>
-                            <p className={classes.serviceCardText}>Хот төлөвлөлт, бүс нутгийн хөгжлийн төсөл суурь судалгаа, дэд бүтцийн хөгжлийн төсөл, ерөнхий төлөвлөгөө.</p>
+                            <p className={classes.serviceCardText}>{props.strings.uilchilgee1Desc}</p>
                         </Col>
                         <Col className={classes.serviceCard}>
-                            <img src={"image/service2.jpg"} alt="John" style={{width:"100%", height: "50%"}} />
+                            <img src={"image/service2.jpg"} alt="service2" style={{width:"100%", height: "50%"}} />
                             <h3 className={classes.serviceCardTitle}>{props.strings.uilchilgee2}</h3>
-                            <p className={classes.serviceCardText}>Интерьер , экстерьер дизайны зураг төсөл, материалын түүвэр тооцоо.</p>
+                            <p className={classes.serviceCardText}>{props.strings.uilchilgee2Desc}</p>
                         </Col>
                         <Col className={classes.serviceCard}>
-                            <img src={"image/service3.jpg"} alt="John" style={{width:"100%", height: "50%"}} />
+                            <img src={"image/service3.jpg"} alt="service3" style={{width:"100%", height: "50%"}} />
                             <h3 className={classes.serviceCardTitle}>{props.strings.uilchilgee3}</h3>
-                            <p className={classes.serviceCardText}>16 хүртэл давхар барилга байгууламжийн ерөнхий төлөвлөгөө тохижилт, өндөржилт, барилга архитектур, эскиз зураг, барилга бүтээц, тооцоо.</p>
+                            <p className={classes.serviceCardText}>{props.strings.uilchilgee3Desc}</p>
                         </Col>
                         <Col className={classes.serviceCard}>
-                            <img src={"image/service4.jpg"} alt="John" style={{width:"100%", height: "50%"}} />
+                            <img src={"image/service4.jpg"} alt="service4" style={{width:"100%", height: "50%"}} />
                             <h3 className={classes.serviceCardTitle}>{props.strings.uilchilgee4}</h3>
                             <ul className={classes.serviceCardText} style={{marginLeft: 15,}}>
-                                <li> Халаалт, агаар сэлгэлт </li>
-                                <li> Усан хангамж </li>
-                                <li> Хүчит төхөөрөмжийн зураг төсөл </li>
-                                <li> Мэдээлэл холбоо, сүлжээний зураг төсөл </li>
+                                <li>{props.strings.uilchilgee4Desc1}</li>
+                                <li>{props.strings.uilchilgee4Desc2}</li>
+                                <li>{props.strings.uilchilgee4Desc3}</li>
+                                <li>{props.strings.uilchilgee4Desc4}</li>
                             </ul>
                         </Col>
                     </Row>
                     <Row className={classes.chapterImageText}>
                         <Col className={classes.serviceCard}>
-                            <img src={"image/service5.jpg"} alt="John" style={{width:"100%", height: "50%"}} />
+                            <img src={"image/service5.jpg"} alt="service5" style={{width:"100%", height: "50%"}} />
                             <h3 className={classes.serviceCardTitle}>{props.strings.uilchilgee5}</h3>
                             <ul className={classes.serviceCardText} style={{marginLeft: 15,}}>
-                                <li> Хүнд  үйлдвэрийн </li>
-                                <li> Хөнгөн үйлдвэрийн </li>
+                                <li>{props.strings.uilchilgee5Desc1}</li>
+                                <li>{props.strings.uilchilgee5Desc2}</li>
                             </ul>
                         </Col>
                         <Col className={classes.serviceCard}>
-                            <img src={"image/service6.jpg"} alt="John" style={{width:"100%", height: "50%"}} />
+                            <img src={"image/service6.jpg"} alt="service6" style={{width:"100%", height: "50%"}} />
                             <h3 className={classes.serviceCardTitle}>{props.strings.uilchilgee6}</h3>
-                            <p className={classes.serviceCardText}>Зураг төсөл, барилга угсралт, инженерийн шугам сүлжээний зөвлөх үйлчилгээ. </p>
+                            <p className={classes.serviceCardText}>{props.strings.uilchilgee6Desc}</p>
                         </Col>
                         <Col className={classes.serviceCard}>
-                            <img src={"image/service7.jpg"} alt="John" style={{width:"100%", height: "50%"}} />
+                            <img src={"image/service7.jpg"} alt="service7" style={{width:"100%", height: "50%"}} />
                             <h3 className={classes.serviceCardTitle}>{props.strings.uilchilgee7}</h3>
-                            <p className={classes.serviceCardText}>Барилга байгууламж, гадна шугам сүлжээний нэгдсэн төсөв.</p>
+                            <p className={classes.serviceCardText}>{props.strings.uilchilgee7Desc}</p>
                         </Col>
                     </Row>
                 </Container>
@@ -330,8 +330,8 @@ export default function Content(props) {
                                     <img className="d-block w-100" src="/image/slider1.jpg" alt="First slide" />
                                     <div className="carousel-caption d-none d-md-block">
                                         <div className={classes.sliderText}>
-                                            <h5>ОРХОН АЙМАГ, ЭРДЭНЭТ ХОТ</h5>
-                                            <p>7-р хорооллын ерөнхий төлөвлөгөө</p>
+                                            <h5>{props.strings.tusul1Title}</h5>
+                                            <p>{props.strings.tusul1Desc}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -339,8 +339,8 @@ export default function Content(props) {
                                     <img className="d-block w-100" src="/image/slider2.jpg" alt="First slide" />
                                     <div className="carousel-caption d-none d-md-block">
                                         <div className={classes.sliderText}>
-                                            <h5>БНХАУ-ЫН "HAHN ARCHITECUAL DESIGN" КОМПАНИТАЙ ХАМТАРСАН ТӨСӨЛ</h5>
-                                            <p>"Trumph Palace" хорооллын зураг төсөл, ерөнхий төлөвлөгөө</p>
+                                            <h5>{props.strings.tusul2Title}</h5>
+                                            <p>{props.strings.tusul2Desc}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -348,8 +348,8 @@ export default function Content(props) {
                                     <img className="d-block w-100" src="/image/slider3.jpg" alt="First slide" />
                                     <div className="carousel-caption d-none d-md-block">
                                         <div className={classes.sliderText}>
-                                            <h5>ХАН-УУЛ ДҮҮРЭГ 10-Р ХОРОО</h5>
-                                            <p>Буянт ухаа-2  хороолол</p>
+                                            <h5>{props.strings.tusul3Title}</h5>
+                                            <p>{props.strings.tusul3Desc}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -389,23 +389,14 @@ export default function Content(props) {
                         {darsan ? <div className={classes.introductionText}>
                             <p className={classes.introductionTextContenHeader} >{props.strings.kampaniiTuhai}</p> 
                             <p style={{textAlign:"justify"}}>
-                                {props.strings.kampaniiTuhaiDelgerengui}
-                            </p>
-                            <p>
-                                ...............
+                                {props.strings.Modal2_1}
                             </p>
                             <div style={{display:"flex", justifyContent: "center", }}>
                                 <div className={classes.introductionBtn} onClick={showModalAboutUs}>{props.strings.tsaashUnshihBtnText}</div>
                             </div>
                         </div> : <div className={classes.introductionText}>
                             <p className={classes.introductionTextContenHeader} >{props.strings.manaiHamtOlon}</p> 
-                            <p style={{textAlign:"justify"}}>
-                                {"Манай хамт олон ....."}
-                            </p>
-                            <p>
-                                Барилга байгууламжийн зураг тесел хот телевлелт, хэсэгчилсэн еренхий 
-                                телевлегее, архитектур...
-                            </p>
+                                {props.strings.Modal3_1}    
                             <div style={{display:"flex", justifyContent: "center", }}>
                                 <div className={classes.introductionBtn} onClick={showModalAboutUsTeam}>{props.strings.tsaashUnshihBtnText}</div>
                             </div>
@@ -438,17 +429,13 @@ export default function Content(props) {
                 footer={null}
                 width={700}
             >
-                <p>Бид үйл ажиллагаандаа олон улсад хүлээн зөвшөөрөгдсөн барилгын зураг
-                    төсөл, орчин үеийн хэрэгцээ шаардлагийн хангаж шинэ техник техногийг 
-                    нэвтрүүлэхийн төлөө салбартаа мэргэшсэн чадавхитай багийг бүрдүүлж, 
-                    хууль дүрэм норм стандартыг чандлан дээдэлсэн, нийгмийн хамт олон 
-                    байхыг зорьж ажиллаж байна.
-                </p>
-                <p>Онцлог шинж чанарууд</p>
+                <p>{props.strings.ehniiModal1}</p>
+                <p>{props.strings.ehniiModal2}</p>
+                <p style={{textTransform: "uppercase"}}>{props.strings.ontslogChanar}</p>
                 <ul>
-                    <li>{"Барилгын иж бүрэн зураг төсөл боловсруулдаг ууган"}</li>
-                    <li>{"Cалбартаа туршлагаараа тэргүүлэгч "}</li>
-                    <li>{"Барилгын иж бүрэн зураг төсөл боловсруулдаг "}</li>
+                    <li>{props.strings.ontslogChanar1}</li>
+                    <li>{props.strings.ontslogChanar2}</li>
+                    <li>{props.strings.ontslogChanar3}</li>
                 </ul>
             </Modal>
             {/* -------------- AboutUs ---------------------*/}
@@ -459,20 +446,13 @@ export default function Content(props) {
                 footer={null}
                 width={700}
             >
-                <p>Бид үйл ажиллагаандаа олон улсад хүлээн зөвшөөрөгдсөн барилгын зураг
-                    төсөл, орчин үеийн хэрэгцээ шаардлагийн хангаж шинэ техник техногийг 
-                    нэвтрүүлэхийн төлөө салбартаа мэргэшсэн чадавхитай багийг бүрдүүлж, 
-                    хууль дүрэм норм стандартыг чандлан дээдэлсэн, нийгмийн хамт олон 
-                    байхыг зорьж ажиллаж байна.
-                </p>
-                <p>Онцлог шинж чанарууд</p>
-                <ul>
-                    <li>{"Барилгын иж бүрэн зураг төсөл боловсруулдаг ууган"}</li>
-                    <li>{"Cалбартаа туршлагаараа тэргүүлэгч "}</li>
-                    <li>{"Барилгын иж бүрэн зураг төсөл боловсруулдаг "}</li>
-                </ul>
+                <p>{props.strings.ehniModal}</p>
+                <p>{props.strings.Modal2_1}</p>
+                <p>{props.strings.Modal2_2}</p>
+                <p>{props.strings.Modal2_3}</p>
+                
             </Modal>
-            {/* -------------- AboutUs ---------------------*/}
+            {/* -------------- AboutEmployeeUs ---------------------*/}
             <Modal
                 title={props.strings.manaiHamtOlon}
                 visible={visibleAboutUsTeam}
@@ -480,12 +460,7 @@ export default function Content(props) {
                 footer={null}
                 width={700}
             >
-                <p>Бид үйл ажиллагаандаа олон улсад хүлээн зөвшөөрөгдсөн барилгын зураг
-                    төсөл, орчин үеийн хэрэгцээ шаардлагийн хангаж шинэ техник техногийг 
-                    нэвтрүүлэхийн төлөө салбартаа мэргэшсэн чадавхитай багийг бүрдүүлж, 
-                    хууль дүрэм норм стандартыг чандлан дээдэлсэн, нийгмийн хамт олон 
-                    байхыг зорьж ажиллаж байна.
-                </p>
+                <p>{props.strings.Modal3_1}</p>
             </Modal>
         </div>
     )

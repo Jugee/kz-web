@@ -1,7 +1,7 @@
 import React from 'react';
 import {Container, makeStyles} from "@material-ui/core"
-import { FacebookOutlined, InstagramOutlined, TwitterOutlined } from '@ant-design/icons';
-import { Col, Row } from 'antd';
+import { FacebookOutlined, InstagramOutlined, TwitterOutlined, UnorderedListOutlined } from '@ant-design/icons';
+import { Col, Menu, Row } from 'antd';
 
 const useStyles = makeStyles(() => ({
    
@@ -63,7 +63,8 @@ const useStyles = makeStyles(() => ({
 
 function Header(props) {
     const classes = useStyles(); 
-
+    const getWidth = window.innerWidth;
+    console.log("whidth", getWidth)
     return (
         <div className={classes.headerMain} >
             <Container >
@@ -71,30 +72,80 @@ function Header(props) {
                     <Col span={2} className={classes.logoStyle}>
                         {"КZ"}
                     </Col>
-                    <Row className={classes.menuItems}>
-                        <Col><a className={classes.aTag} href="#homePage" target="_self">{props.strings.nuur}</a></Col>
-                        <Col><a className={classes.aTag} href="#indroductionPage" target="_self">{props.strings.taniltsuulga}</a></Col>
-                        <Col><a className={classes.aTag} href="#projectsPage" target="_self">{props.strings.tusuluud}</a></Col>
-                        <Col><a className={classes.aTag} href="#aboutPage" target="_self">{props.strings.bidniiTuhai}</a></Col>
-                        <Col><a className={classes.aTag} href="#callPage" target="_self">{props.strings.holbooBarih}</a></Col>
-                        <Col>
+                    {
+                        getWidth > 700 ?
+                        <Row className={classes.menuItems}>
+                            <Col><a className={classes.aTag} href="#homePage" target="_self">{props.strings.nuur}</a></Col>
+                            <Col><a className={classes.aTag} href="#indroductionPage" target="_self">{props.strings.taniltsuulga}</a></Col>
+                            <Col><a className={classes.aTag} href="#projectsPage" target="_self">{props.strings.tusuluud}</a></Col>
+                            <Col><a className={classes.aTag} href="#aboutPage" target="_self">{props.strings.bidniiTuhai}</a></Col>
+                            <Col><a className={classes.aTag} href="#callPage" target="_self">{props.strings.holbooBarih}</a></Col>
+                            <Col>
+                                <a href="https://www.facebook.com/Karkas-Zurag-218533324879709/?ti=as" style={{color: "inherit"}} target="fbAcc">
+                                    <FacebookOutlined className={classes.sociallogos}/>
+                                </a>
+                            </Col>
+                            <Col>
+                                <InstagramOutlined className={classes.sociallogos}/> 
+                            </Col>
+                            <Col>
+                                <TwitterOutlined className={classes.sociallogos}/> 
+                            </Col>
+                            <Col>
+                                <select className={classes.langStyle} onChange={props.handleLanguageChange}>
+                                    <option value="mn">MNG</option>
+                                    <option value="en">ENG</option>
+                                </select>
+                            </Col>
+                        </Row>
+                        : <Row className={classes.menuItems}>
+                            <div style={{cursor: "pointer", border: "3px solid #ffffff", borderRadius:"5px", width: "38x", height: "36px", display:"flex", alignItems:"center", justifyContent:"center"}}>
+                                <UnorderedListOutlined style={{fontSize:"1rem"}}/>
+                            </div>
+                        </Row>
+                    }
+                    
+                    
+                    
+
+                    
+                    {/* <Menu  mode="horizontal" style={{display:"flex", justifyContent:"space-between"}}>
+                        <Menu.Item disabled>
+                            KZ
+                        </Menu.Item>
+                        <Menu.Item key="home" >
+                            <a className={classes.aTag} href="#homePage" target="_self">{props.strings.nuur}</a>
+                        </Menu.Item>
+                        <Menu.Item key="intro">
+                            <a className={classes.aTag} href="#indroductionPage" target="_self">{props.strings.taniltsuulga}</a>
+                        </Menu.Item>
+                        <Menu.Item key="project">
+                            <a className={classes.aTag} href="#projectsPage" target="_self">{props.strings.tusuluud}</a>
+                        </Menu.Item>
+                        <Menu.Item key="about">
+                            <a className={classes.aTag} href="#aboutPage" target="_self">{props.strings.bidniiTuhai}</a>
+                        </Menu.Item>
+                        <Menu.Item key="call">
+                            <a className={classes.aTag} href="#callPage" target="_self">{props.strings.holbooBarih}</a>
+                        </Menu.Item>
+                        <Menu.Item key="fb">
                             <a href="https://www.facebook.com/Karkas-Zurag-218533324879709/?ti=as" style={{color: "inherit"}} target="_blank">
                                 <FacebookOutlined className={classes.sociallogos}/>
                             </a>
-                        </Col>
-                        <Col>
+                        </Menu.Item>
+                        <Menu.Item key="insta">
                             <InstagramOutlined className={classes.sociallogos}/> 
-                        </Col>
-                        <Col>
+                        </Menu.Item>
+                        <Menu.Item key="twitter">
                             <TwitterOutlined className={classes.sociallogos}/> 
-                        </Col>
-                        <Col>
-                            <select className={classes.langStyle} onChange={props.handleLanguageChange}>
+                        </Menu.Item>
+                        <Menu.Item key="lang">
+                            <select className={classes.langStyle} onChange={props.handleLanguageChange} style={{background: "#ffffff"}}>
                                 <option value="mn">MNG</option>
                                 <option value="en">ENG</option>
                             </select>
-                        </Col>
-                    </Row>
+                        </Menu.Item>
+                    </Menu> */}
                 </Row>
             </Container>
         </div>
