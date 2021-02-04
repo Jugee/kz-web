@@ -1,19 +1,27 @@
 import React, {useState} from 'react'
-import {Container, makeStyles} from "@material-ui/core"
-import {CheckCircleOutlined} from "@ant-design/icons"
-import {Col, Row } from 'antd';
+import { Container, makeStyles} from "@material-ui/core"
+import LocationOnIcon from '@material-ui/icons/LocationOn';
+import PhoneIcon from '@material-ui/icons/Phone';
+import MailOutlineIcon from '@material-ui/icons/MailOutline';
+import ContactlessIcon from '@material-ui/icons/Contactless';
+import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
+import {Col, Row, Steps } from 'antd';
 import Modal from 'antd/lib/modal/Modal';
+import "../App.css";
 
 
 const useStyles = makeStyles(() => ({
+    antStepsitemTitle: {
+        colot: "white"
+    },
     headerTitle: {
         padding: 86,
         backgroundImage: "url(image/headerCover.jpg)",
         backgroundAttachment: "fixed",
-        backgroundSize: "120%",
+        backgroundSize: "100%, 100%",
         backgroundRepeat: "no-repeat",
-        minHeight:"400px",
-        color: "#ffffff"
+        minHeight:"880px",
+        color: "#000000"
     },
     chapterMain: {
         padding: "32px 32px 32px 0px",
@@ -36,7 +44,7 @@ const useStyles = makeStyles(() => ({
         letterSpacing: "3px"
     },
     chapterTitleMainText:{
-        fontWeight: "400", 
+        fontFamily: "MonFnt15",
         fontSize:"3rem", 
         margin: "0px"
     },
@@ -56,33 +64,45 @@ const useStyles = makeStyles(() => ({
         alignItems:"center"
     },
     introductionText:{
+        width:"100%",
+        height: "100%",
+        padding: "40px", 
+        position:"relative"
+    },
+    introductionTextAbout:{
         backgroundColor: "rgba(2, 25, 32, 0.5)", 
         width: "40%", 
         marginLeft: "-200px", 
         padding: "15px", 
         position:"relative"
     },
-    introductionTextAbout:{
-        backgroundColor: "rgba(2, 25, 32, 0.7)", 
-        width: "40%", 
-        marginLeft: "-200px", 
-        padding: "15px", 
-        position:"relative"
+    introductionIconStyle:{
+        width:"26%", 
+        marginBottom: "10px", 
+        marginTop: "15px"
     },
     introductionTextContenHeader: {
-        fontSize: "1.2rem", 
-        fontWeight:"500",
-        color: "#ffffff", 
+        marginTop: "15px",
+        fontSize: "0.9  rem", 
+        fontWeight:"400",
+        // color: "#ffffff", 
         letterSpacing: "1px"
     },
     introductionTextLiTagIcon: {
         marginRight: "15px", 
+        marginLeft: "15px",
         fontSize: "1.5rem",
-        margin: "5px",
-        color:"#ffffff"
+        color:"#718dd7"
+    },
+    introductionListStyle: {
+        display: "flex", 
+        alignContent:"centers", 
+        alignItems:"center",
+        marginTop: "10px"
     },
     introductionBtn: {
-        border: "2px solid #7788c4",
+        border: "3px solid #7788c4",
+        background:"#7788c4",
         fontSize:"0.8rem",
         display:"flex",
         alignItems: "center",
@@ -95,6 +115,7 @@ const useStyles = makeStyles(() => ({
         "&:hover": {
             cursor: "pointer",
             background:"#7788c4",
+            border: "3px solid #fff",
 
         }
     },
@@ -108,32 +129,49 @@ const useStyles = makeStyles(() => ({
        }
     },
     serviceCard: {
-        backgroundColor: "rgba(2, 25, 32, 0.5)", 
         transition: "transform 0.35s ease-out",
-        width: "248px",
-        height:"386px",
+        width: "280px",
+        height:"258px",
         margin: "15px",
         "&:hover":{
             cursor: "pointer",
             transform: "scale(1.05)"
        }
     },
+    serviceCardSub: {
+        width: "280px",
+        height:"258px",
+        background:"#504c4c78", 
+        display:"flex", 
+        justifyContent:"center", 
+        flexDirection:"column", 
+        alignItems:"center"
+    },
+    serviceCardIconStyle:{
+        marginTop: "15px",
+        height:"60px",
+        display:"flex", 
+        justifyContent:"center", 
+        flexDirection:"column", 
+        alignItems:"center"
+    },
     serviceCardTitle:{
+        fontFamily: "MonFnt15",
+        marginTop: "30px",
         display:"flex",
         justifyContent: "center",
-        alignItems:"center",
-        background:"#0059a2",
         color: "#ffffff",
-        height: "58px",
+        height: "40px",
         fontSize:"0.8rem",
         textTransform: "uppercase",
-        padding: "15px 15px 15px 15px",
+        textAlign:"center",
         letterSpacing: "2px", 
-        fontWeight:"400",
+        fontWeight:"700",
         lineHeight: "1.5"
     },
     serviceCardText: {
-        fontSize: "0.8rem",
+        height: "100px",
+        fontSize: "0.82rem",
         padding: "0px 15px 0px 15px",
         fontWeight:500
     },
@@ -157,8 +195,65 @@ const useStyles = makeStyles(() => ({
             cursor: "pointer",
             background:"#7788c4",
         }
+    },
+    projectNavbar: {
+        display:"flex", 
+        flexDirection:"row", 
+        alignItems:"center"
+    },
+    projectNavbarIcon:{
+        zIndex: 100,
+        display:"flex",  
+        height: "46px",
+        width: "55px",
+        justifyContent:"start", 
+        alignItems:"center", 
+        background: "#7788c4",
+        borderTopRightRadius: "25px",
+        borderBottomRightRadius: "25px",
+    },
+    projectNavbarTitle:{
+        zIndex: 1,
+        cursor: "pointer",
+        fontSize:"0.9rem",
+        fontWeight: 400,
+        marginLeft: "15px", 
+        height: "46px",  
+        display:"flex", 
+        alignItems:"center",
+        "&:hover":{
+            color: "#7788c4"
+        }
+    },
+    projectNavbarSpaceDiv:{
+        background:"#7788c4",
+         width: "36px", 
+         height: "22px"
+    },
+    projectDate:{
+        width: "80px", 
+        height: "20px", 
+        background:"#7788c4",
+        borderRadius: "15px", 
+        display:"flex", 
+        alignItems:"center", 
+        justifyContent:"center"
+    },
+    projectDateText:{
+        color: "white", 
+        fontSize: "0.7rem",
+         margin: "0px"
+    },
+    callSubTile: {
+        display:"flex", 
+        justifyItems:"center",   
+        alignItems:"center",
+        marginBottom: "25px",
+        "&:hover":{
+            cursor: "pointer",
+            color:"#D2D2D2"
+        }
     }
-
 }))
 
 export default function Content(props) {
@@ -168,7 +263,85 @@ export default function Content(props) {
     const [visibleIntorduction, setVisibleIntroduction] = useState(false)
     const [visibleAboutUs, setVisibleAboutUs] = useState(false)
     const [visibleAboutUsTeam, setVisibleAboutUsTeam] = useState(false)
+    const { Step } = Steps;
+    const [service1, setService1] = useState(true);
+    const [service2, setService2] = useState(false);
+    const [service3, setService3] = useState(false);
+    const [service4, setService4] = useState(false);
+    const [service5, setService5] = useState(false);
+    const [service6, setService6] = useState(false);
+    const [service7, setService7] = useState(false);
 
+    function serviceClick(param){
+        var services = param;
+        switch(services) {
+            case "service1":
+                setService1(true);
+                setService2(false);
+                setService3(false);
+                setService4(false);
+                setService5(false);
+                setService6(false);
+                setService7(false);
+            break;
+            case "service2":
+                setService1(false);
+                setService2(true);
+                setService3(false);
+                setService4(false);
+                setService5(false);
+                setService6(false);
+                setService7(false);
+            break;
+            case "service3":
+                setService1(false);
+                setService2(false);
+                setService3(true);
+                setService4(false);
+                setService5(false);
+                setService6(false);
+                setService7(false);
+            break;
+            case "service4":
+                setService1(false);
+                setService2(false);
+                setService3(false);
+                setService4(true);
+                setService5(false);
+                setService6(false);
+                setService7(false);
+            break;
+            case "service5":
+                setService1(false);
+                setService2(false);
+                setService3(false);
+                setService4(false);
+                setService5(true);
+                setService6(false);
+                setService7(false);
+            break;
+            case "service6":
+                setService1(false);
+                setService2(false);
+                setService3(false);
+                setService4(false);
+                setService5(false);
+                setService6(true);
+                setService7(false);
+            break;
+            case "service7":
+                setService1(false);
+                setService2(false);
+                setService3(false);
+                setService4(false);
+                setService5(false);
+                setService6(false);
+                setService7(true);
+            break;
+            default:
+                
+        }
+    }
     function daravCompany() {
         if(darsan === false ){
             setDarsan(true)
@@ -213,8 +386,8 @@ export default function Content(props) {
             <div className={classes.headerTitle} >
                 <Container>
                     <img src={"/image/logoVector.svg"} width="68px" alt="logo"/>
-                    <h1 style={{fontWeight: "400", fontSize:"3rem", color:"#ffffff", margin: "15px 0px 15px 0px"}}>{props.strings.headerMainTitle}</h1>
-                    <p style={{fontSize: "0.8rem"}}>
+                    <h1 style={{fontFamily: "MonFnt15", fontSize:"3rem", color:"#000", margin: "15px 0px 15px 0px"}}>{props.strings.headerMainTitle}</h1>
+                    <p style={{fontSize: "0.8rem",}}>
                         {props.strings.headerMainTitleSub}
                     </p>
                 </Container>
@@ -234,14 +407,20 @@ export default function Content(props) {
                             <img src={"image/introCover.png"} width="100%" alt="line"/>
                         </Col>
                         <Col className={classes.introductionTextAbout}>
-                            <p className={classes.introductionTextContenHeader}>{props.strings.yagadBidniihSongohVe}</p> 
+                            <p className={classes.introductionTextContenHeader} style={{fontFamily: "MonFnt15"}}>{props.strings.yagadBidniihSongohVe}</p> 
                             <p>
                                 {props.strings.taniltsuulgaText}
                             </p>
-                            <p style={{textTransform: "uppercase"}}>{props.strings.ontslogChanar}</p>
-                            <CheckCircleOutlined className={classes.introductionTextLiTagIcon}/>{props.strings.ontslogChanar1} <br/>
-                            <CheckCircleOutlined className={classes.introductionTextLiTagIcon}/>{props.strings.ontslogChanar2} <br/>
-                            <CheckCircleOutlined className={classes.introductionTextLiTagIcon}/>{props.strings.ontslogChanar3} <br/>
+                            <p style={{fontSize: "1.1rem", fontWeight: 500}}>{props.strings.ontslogChanar}</p>
+                            <div className={classes.introductionListStyle}>
+                                <FiberManualRecordIcon className={classes.introductionTextLiTagIcon}/>{props.strings.ontslogChanar2} <br/>
+                            </div>
+                            <div className={classes.introductionListStyle}>
+                                <FiberManualRecordIcon className={classes.introductionTextLiTagIcon}/>{props.strings.ontslogChanar1} <br/>
+                            </div>
+                            <div className={classes.introductionListStyle}>
+                                <FiberManualRecordIcon className={classes.introductionTextLiTagIcon}/>{props.strings.ontslogChanar3} <br/>
+                            </div>
                             <div style={{display:"flex", justifyContent: "center", }}>
                                 <div className={classes.introductionBtn} onClick={showModal}>{props.strings.tsaashUnshihBtnText}</div>
                             </div>
@@ -260,50 +439,69 @@ export default function Content(props) {
                         <img src={"/image/line.svg"} height="14px" alt="line"/>
                     </div>
                     <Row className={classes.chapterImageText}>
-                        <Col className={classes.serviceCard}>
-                            <img src={"image/service1.jpg"} alt="service1" style={{width:"100%", height:"50%"}}/>
-                            <h3 className={classes.serviceCardTitle}>{props.strings.uilchilgee1}</h3>
-                            <p className={classes.serviceCardText}>{props.strings.uilchilgee1Desc}</p>
+                        <Col className={classes.serviceCard} style={{ backgroundImage: "url(image/service1.jpg)", backgroundRepeat: "no-repeat", backgroundSize: "100% 100%",}}>
+                            <div className={classes.serviceCardSub}>
+                                <div className={classes.serviceCardIconStyle}>
+                                    <img src={"image/IconService1.png"} alt="service1" className={classes.introductionIconStyle} />
+                                </div>
+                                <h3 className={classes.serviceCardTitle}>{props.strings.uilchilgee1}</h3>
+                                <p className={classes.serviceCardText}>{props.strings.uilchilgee1Desc}</p>
+                            </div>
                         </Col>
-                        <Col className={classes.serviceCard}>
-                            <img src={"image/service2.jpg"} alt="service2" style={{width:"100%", height: "50%"}} />
-                            <h3 className={classes.serviceCardTitle}>{props.strings.uilchilgee2}</h3>
-                            <p className={classes.serviceCardText}>{props.strings.uilchilgee2Desc}</p>
+                        <Col className={classes.serviceCard} style={{ backgroundImage: "url(image/service2.jpg)", backgroundRepeat: "no-repeat", backgroundSize: "100% 100%",}}>
+                            <div className={classes.serviceCardSub}>
+                                <div className={classes.serviceCardIconStyle}>
+                                    <img src={"image/IconService2.png"} alt="service1" className={classes.introductionIconStyle} />
+                                </div>
+                                <h3 className={classes.serviceCardTitle}>{props.strings.uilchilgee2}</h3>
+                                <p className={classes.serviceCardText}>{props.strings.uilchilgee2Desc}</p>
+                            </div>
                         </Col>
-                        <Col className={classes.serviceCard}>
-                            <img src={"image/service3.jpg"} alt="service3" style={{width:"100%", height: "50%"}} />
-                            <h3 className={classes.serviceCardTitle}>{props.strings.uilchilgee3}</h3>
-                            <p className={classes.serviceCardText}>{props.strings.uilchilgee3Desc}</p>
+                        <Col className={classes.serviceCard} style={{ backgroundImage: "url(image/service3.jpg)", backgroundRepeat: "no-repeat", backgroundSize: "100% 100%",}}>
+                            <div className={classes.serviceCardSub}>
+                                <div className={classes.serviceCardIconStyle}>
+                                    <img src={"image/IconService3.png"} alt="service1" className={classes.introductionIconStyle} style={{width: "30%"}}/>
+                                </div>
+                                <h3 className={classes.serviceCardTitle}>{props.strings.uilchilgee3}</h3>
+                                <p className={classes.serviceCardText}>{props.strings.uilchilgee3Desc}</p>
+                            </div>
                         </Col>
-                        <Col className={classes.serviceCard}>
-                            <img src={"image/service4.jpg"} alt="service4" style={{width:"100%", height: "50%"}} />
-                            <h3 className={classes.serviceCardTitle}>{props.strings.uilchilgee4}</h3>
-                            <ul className={classes.serviceCardText} style={{marginLeft: 15,}}>
-                                <li>{props.strings.uilchilgee4Desc1}</li>
-                                <li>{props.strings.uilchilgee4Desc2}</li>
-                                <li>{props.strings.uilchilgee4Desc3}</li>
-                                <li>{props.strings.uilchilgee4Desc4}</li>
-                            </ul>
+                        <Col className={classes.serviceCard} style={{ backgroundImage: "url(image/service4.jpg)", backgroundRepeat: "no-repeat", backgroundSize: "100% 100%",}}>
+                            <div className={classes.serviceCardSub}>
+                                <div className={classes.serviceCardIconStyle}>
+                                    <img src={"image/IconService4.png"} alt="service1" className={classes.introductionIconStyle} />
+                                </div>
+                                <h3 className={classes.serviceCardTitle}>{props.strings.uilchilgee4}</h3>
+                                <ul className={classes.serviceCardText} style={{marginLeft: 35,}}>
+                                    <li>{props.strings.uilchilgee4Desc1}</li>
+                                    <li>{props.strings.uilchilgee4Desc2}</li>
+                                    <li>{props.strings.uilchilgee4Desc4}</li>
+                                </ul>
+                            </div>
                         </Col>
-                    </Row>
-                    <Row className={classes.chapterImageText}>
-                        <Col className={classes.serviceCard}>
-                            <img src={"image/service5.jpg"} alt="service5" style={{width:"100%", height: "50%"}} />
-                            <h3 className={classes.serviceCardTitle}>{props.strings.uilchilgee5}</h3>
-                            <ul className={classes.serviceCardText} style={{marginLeft: 15,}}>
-                                <li>{props.strings.uilchilgee5Desc1}</li>
-                                <li>{props.strings.uilchilgee5Desc2}</li>
-                            </ul>
+                        <Col className={classes.serviceCard} style={{ backgroundImage: "url(image/service5.jpg)", backgroundRepeat: "no-repeat", backgroundSize: "100% 100%",}}>
+                            <div className={classes.serviceCardSub}>
+                                <div className={classes.serviceCardIconStyle}>
+                                    <img src={"image/IconService5.png"} alt="service1" className={classes.introductionIconStyle} />
+                                </div>
+                                <h3 className={classes.serviceCardTitle}>{props.strings.uilchilgee5}</h3>
+                                <ul className={classes.serviceCardText}>
+                                    <li>{props.strings.uilchilgee5Desc1}</li>
+                                    <li>{props.strings.uilchilgee5Desc2}</li>
+                                </ul>
+                            </div>
                         </Col>
-                        <Col className={classes.serviceCard}>
-                            <img src={"image/service6.jpg"} alt="service6" style={{width:"100%", height: "50%"}} />
-                            <h3 className={classes.serviceCardTitle}>{props.strings.uilchilgee6}</h3>
-                            <p className={classes.serviceCardText}>{props.strings.uilchilgee6Desc}</p>
-                        </Col>
-                        <Col className={classes.serviceCard}>
-                            <img src={"image/service7.jpg"} alt="service7" style={{width:"100%", height: "50%"}} />
-                            <h3 className={classes.serviceCardTitle}>{props.strings.uilchilgee7}</h3>
-                            <p className={classes.serviceCardText}>{props.strings.uilchilgee7Desc}</p>
+                        <Col className={classes.serviceCard} style={{ backgroundImage: "url(image/service6.jpg)",  backgroundRepeat: "no-repeat", backgroundSize: "100% 100%",}}>
+                            <div className={classes.serviceCardSub}>
+                                <div className={classes.serviceCardIconStyle}>
+                                    <img src={"image/IconService6.png"} alt="service1" className={classes.introductionIconStyle} />
+                                </div>
+                                <h3 className={classes.serviceCardTitle}>{props.strings.uilchilgee6}</h3>
+                                <ul className={classes.serviceCardText} style={{marginLeft: 35,}}>
+                                    <li>{props.strings.uilchilgee6Desc}</li>
+                                    <li>{props.strings.uilchilgee6Desc2}</li>
+                                </ul>
+                            </div>
                         </Col>
                     </Row>
                 </Container>
@@ -315,57 +513,112 @@ export default function Content(props) {
                         <p className={classes.chapterTitleMainText} >{props.strings.tusuluud}</p>
                         <p className={classes.chapterTitleSubMini} >{props.strings.tusulSubTitle}</p> 
                     </div>
-                    <div> 
+                    <div style={{marginBottom: "30px"}}> 
                         <img src={"/image/line.svg"} height="14px" alt="line"/>
                     </div>
-                    <div className={classes.introductionImageText}>
-                        <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
-                            <ol className="carousel-indicators">
-                                <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
-                                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                            </ol>
-                            <div className="carousel-inner">
-                                <div className="carousel-item active" style={{width:"900px", height:"500px"}}>
-                                    <img className="d-block w-100" src="/image/slider1.jpg" alt="First slide" />
-                                    <div className="carousel-caption d-none d-md-block">
-                                        <div className={classes.sliderText}>
-                                            <h5>{props.strings.tusul1Title}</h5>
-                                            <p>{props.strings.tusul1Desc}</p>
-                                        </div>
+                    <Row style={{display:"flex", justifyContent: "center", width:"100%"}}>
+                        <Col style={{width:"33%"}}>
+                            <div style={{background: "#242424", width:"402px"}}>
+                                <div className={classes.projectNavbarSpaceDiv} style={{height: "25px"}}/>        
+                                <div className={classes.projectNavbar}>
+                                    <div className={classes.projectNavbarIcon}>
+                                        <img src={"image/IconService1.png"} alt="service1" style={{marginLeft:"5px", width: "28px"}}/>
+                                    </div>
+                                    <div onClick={() => serviceClick("service1")} className={classes.projectNavbarTitle} style={{color: service1 ? "#7788c4" : ""}}>
+                                        {props.strings.uilchilgee1}
                                     </div>
                                 </div>
-                                <div className="carousel-item" style={{width:"900px", height:"500px"}}>
-                                    <img className="d-block w-100" src="/image/slider2.jpg" alt="First slide" />
-                                    <div className="carousel-caption d-none d-md-block">
-                                        <div className={classes.sliderText}>
-                                            <h5>{props.strings.tusul2Title}</h5>
-                                            <p>{props.strings.tusul2Desc}</p>
-                                        </div>
+                                <div className={classes.projectNavbarSpaceDiv}/>        
+                                <div className={classes.projectNavbar}>
+                                    <div className={classes.projectNavbarIcon}>
+                                        <img src={"image/IconService2.png"} alt="service1" style={{marginLeft:"5px", width: "28px"}}/>
+                                    </div>
+                                    <div onClick={() => serviceClick("service2")} className={classes.projectNavbarTitle} style={{color: service2 ? "#7788c4" : ""}}>
+                                        {props.strings.uilchilgee2}
                                     </div>
                                 </div>
-                                <div className="carousel-item" style={{width:"900px", height:"500px"}}>
-                                    <img className="d-block w-100" src="/image/slider3.jpg" alt="First slide" />
-                                    <div className="carousel-caption d-none d-md-block">
-                                        <div className={classes.sliderText}>
-                                            <h5>{props.strings.tusul3Title}</h5>
-                                            <p>{props.strings.tusul3Desc}</p>
-                                        </div>
+                                <div className={classes.projectNavbarSpaceDiv}/>        
+                                <div className={classes.projectNavbar}>
+                                    <div className={classes.projectNavbarIcon}>
+                                        <img src={"image/IconService3.png"} alt="service1" style={{marginLeft:"5px", width: "32px"}}/>
+                                    </div>
+                                    <div onClick={() => serviceClick("service3")} className={classes.projectNavbarTitle} style={{color: service3 ? "#7788c4" : ""}}>
+                                        {props.strings.uilchilgee3}
                                     </div>
                                 </div>
-                            
+                                <div className={classes.projectNavbarSpaceDiv}/>        
+                                <div className={classes.projectNavbar}>
+                                    <div className={classes.projectNavbarIcon}>
+                                        <img src={"image/IconService4.png"} alt="service1" style={{marginLeft:"5px", width: "32px"}}/>
+                                    </div>
+                                    <div onClick={() => serviceClick("service4")} className={classes.projectNavbarTitle} style={{color: service4 ? "#7788c4" : ""}}>
+                                        {props.strings.uilchilgee4}
+                                    </div>
+                                </div>
+                                <div className={classes.projectNavbarSpaceDiv}/>        
+                                <div className={classes.projectNavbar}>
+                                    <div className={classes.projectNavbarIcon}>
+                                        <img src={"image/IconService5.png"} alt="service1" style={{marginLeft:"5px", width: "28px"}}/>
+                                    </div>
+                                    <div onClick={() => serviceClick("service5")} className={classes.projectNavbarTitle} style={{color: service5 ? "#7788c4" : ""}}>
+                                        {props.strings.uilchilgee5}
+                                    </div>
+                                </div>
+                                <div className={classes.projectNavbarSpaceDiv}/>        
+                                <div className={classes.projectNavbar}>
+                                    <div className={classes.projectNavbarIcon}>
+                                        <img src={"image/IconService6.png"} alt="service1" style={{marginLeft:"5px", width: "28px"}}/>
+                                    </div>
+                                    <div onClick={() => serviceClick("service6")} className={classes.projectNavbarTitle} style={{color: service6 ? "#7788c4" : ""}}>
+                                        {props.strings.uilchilgee6}
+                                    </div>
+                                </div>
+                                <div className={classes.projectNavbarSpaceDiv}/>        
+                                <div className={classes.projectNavbar}>
+                                    <div className={classes.projectNavbarIcon}>
+                                        <img src={"image/IconService7.png"} alt="service1" style={{marginLeft:"5px", width: "28px", }}/>
+                                    </div>
+                                    <div onClick={() => serviceClick("service7")} className={classes.projectNavbarTitle} style={{color: service7 ? "#7788c4" : ""}}>
+                                        {props.strings.uilchilgee7}
+                                    </div>
+                                </div>
+                                <div className={classes.projectNavbarSpaceDiv} style={{height: "25px"}}/>        
                             </div>
-                            <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                                <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span className="sr-only">Previous</span>
-                            </a>
-                            <a className="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                                <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span className="sr-only">Next</span>
-                            </a>
-                        </div>
-                    </div>
-                
+                        </Col>
+                        <Col  style={{width:"50%", display:"flex", padding: "15px", alignItems:"center", alignContent: "center"}}>
+                            <Steps progressDot current={4} direction="vertical" >
+                                <div style={{display:"flex", justifyContent: "flex-end"}}>
+                                    <div className={classes.projectDate}>
+                                        <h6 className={classes.projectDateText}>2019 - 2020</h6>
+                                    </div>
+                                </div>
+                                <Step title={props.strings.tusul1Title} description={props.strings.tusul1Desc}/>
+                                <div style={{display:"flex", justifyContent: "flex-end"}}>
+                                    <div className={classes.projectDate}>
+                                        <h6 className={classes.projectDateText}>2019 - 2020</h6>
+                                    </div>
+                                </div>
+                                <Step title={props.strings.tusul2Title} description={props.strings.tusul2Desc}/>
+                                <div style={{display:"flex", justifyContent: "flex-end"}}>
+                                    <div className={classes.projectDate}>
+                                        <h6 className={classes.projectDateText}>2019 - 2020</h6>
+                                    </div>
+                                </div>
+                                <Step title={props.strings.tusul3Title} description={props.strings.tusul3Desc}/>
+                                {service1 ? 
+                                    <> 
+                                        <div style={{display:"flex", justifyContent: "flex-end"}}>
+                                            <div className={classes.projectDate}>
+                                                <h6 className={classes.projectDateText}>2019 - 2020</h6>
+                                            </div>
+                                        </div>
+                                        <Step title={props.strings.tusul3Title} description={props.strings.tusul3Desc}/>
+                                    </>
+                                    : <></>
+                                }
+                            </Steps>
+                        </Col>
+                    </Row>
                 </Container>
             </div>
             {/* -------------------------------------------- About -----------------------------------------------*/}
@@ -382,32 +635,36 @@ export default function Content(props) {
                         <Col className={classes.aboutBtn} onClick={() => daravCompany()} style={{ background: darsan ? "#7788c4" : ""}}>{props.strings.kampaniiTuhai}</Col>
                         <Col className={classes.aboutBtn} onClick={() => daravTeam()} style={{ background: darsanTeam ? "#7788c4" : ""}}>{props.strings.manaiHamtOlon}</Col>
                     </Row>
-                    <div className={classes.introductionImageText}>
-                        <div style={{width: "60%"}}>
-                            <img src={"image/aboutCover.jpg"} width="100%" alt="line"/>
-                        </div>
-                        {darsan ? <div className={classes.introductionText}>
-                            <p className={classes.introductionTextContenHeader} >{props.strings.kampaniiTuhai}</p> 
-                            <p style={{textAlign:"justify"}}>
-                                {props.strings.Modal2_1}
-                            </p>
-                            <div style={{display:"flex", justifyContent: "center", }}>
-                                <div className={classes.introductionBtn} onClick={showModalAboutUs}>{props.strings.tsaashUnshihBtnText}</div>
+                    <Row style={{alignItems: "center", backgroundColor: "#202835", }}>
+                        <Col sm={12} md={12} lg={12} xl={12}>
+                            <div>
+                                <img src={"image/aboutCover.jpg"} width="100%" alt="line"/>
                             </div>
-                        </div> : <div className={classes.introductionText}>
-                            <p className={classes.introductionTextContenHeader} >{props.strings.manaiHamtOlon}</p> 
-                                {props.strings.Modal3_1}    
-                            <div style={{display:"flex", justifyContent: "center", }}>
-                                <div className={classes.introductionBtn} onClick={showModalAboutUsTeam}>{props.strings.tsaashUnshihBtnText}</div>
-                            </div>
-                        </div> }
-                        
-                    </div>
+                        </Col>
+                        <Col sm={12} md={12} lg={12} xl={12} style={{display:"flex", alignItems: "center",}}>
+                            {darsan ? <div className={classes.introductionText}>
+                                <p className={classes.introductionTextContenHeader} >{props.strings.kampaniiTuhai}</p> 
+                                <p style={{textAlign:"justify"}}>
+                                    {props.strings.Modal2_1}<br/>
+                                </p>
+                                <p>{props.strings.Modal2_2}</p>
+                                <div style={{display:"flex", justifyContent: "center", }}>
+                                    <div className={classes.introductionBtn} onClick={showModalAboutUs}>{props.strings.tsaashUnshihBtnText}</div>
+                                </div>
+                            </div> : <div className={classes.introductionText}>
+                                <p className={classes.introductionTextContenHeader} >{props.strings.manaiHamtOlon}</p> 
+                                    {props.strings.Modal3_1}    
+                                <div style={{display:"flex", justifyContent: "center", }}>
+                                    <div className={classes.introductionBtn} onClick={showModalAboutUsTeam}>{props.strings.tsaashUnshihBtnText}</div>
+                                </div>
+                            </div> }
+                        </Col>
+                    </Row>
                 </Container>
             </div>
             {/* -------------------------------------------- Call -----------------------------------------------*/}
-            <div className={classes.chapterMain} id="callPage">
-                <Container style={{ display: "flex", flexDirection: "column",  alignItems: "center", }}>
+            <div className={classes.chapterMain} id="callPage" style={{padding: "0px", }}>
+                <div style={{ display: "flex", flexDirection: "column",  alignItems: "center", }}>
                     <div className={classes.introductionTitle}>
                         <p className={classes.chapterTitleMainText} >{props.strings.holbooBarih}</p>
                         <p className={classes.chapterTitleSubMini} >{props.strings.holbooBarihSubTitle}</p> 
@@ -415,10 +672,41 @@ export default function Content(props) {
                     <div> 
                         <img src={"/image/line.svg"} height="14px" alt="line"/>
                     </div>
-                    <div style={{width: "100%", marginTop:"15px"}}>
-                        <iframe title="map" width="100%" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=ulaanbaatar&t=&z=11&ie=UTF8&iwloc=&output=embed" frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0"></iframe>
+                    <div style={{display:"flex", justifyContent:"flex-end", position: "absolute", marginTop: "20%", marginLeft:"50%"}}>
+                        <div style={{background: "#2f2f2f", width: "420px", height: "480px", padding: "30px",}}>
+                            <div style={{fontSize:"1.4rem", marginBottom: "20px"}}>
+                                {props.strings.holbooBarihTitle}
+                            </div>
+                            <div style={{background: "#1b1b1b", borderRadius: "15px", padding: "15px", marginBottom:"15px", color:"#d3d8e4"}}>
+                                <Row style={{display:"flex", justifyItems: "space-between", justifyContent:"space-between", padding: "10px"}}>
+                                    <Row style={{display: "flex", flexDirection: "column"}}>
+                                        <Col className={classes.callSubTile} >
+                                            <LocationOnIcon style={{fontSize:"1.8rem", marginRight:"15px"}}/>  Хаяг: {props.strings.hayg}
+                                        </Col>
+                                        <Col className={classes.callSubTile} >
+                                            <PhoneIcon style={{fontSize:"1.8rem", marginRight:"15px"}}/> Утас: {props.strings.utas}
+                                        </Col>
+                                        <Col className={classes.callSubTile} style={{marginBottom: "0px"}}>
+                                            <MailOutlineIcon style={{fontSize:"1.8rem", marginRight:"15px"}}/> E-mail хяаг: {props.strings.mail}
+                                        </Col>
+                                    </Row>
+                                </Row>
+                            </div>
+                            <div style={{background: "#1b1b1b", borderRadius: "15px", padding: "15px", color:"#d3d8e4"}}>
+                                <Row style={{display:"flex", justifyItems: "space-between", justifyContent:"space-between", padding: "10px"}}>
+                                    <Row style={{display: "flex", flexDirection: "column"}}>
+                                        <Col className={classes.callSubTile} style={{marginBottom: "0px"}}>
+                                            <ContactlessIcon style={{fontSize:"1.8rem", marginRight:"15px"}}/> Хатран ажилагч байгуулга: 
+                                        </Col>
+                                    </Row>
+                                </Row>
+                            </div>
+                        </div>
                     </div>
-                </Container>
+                    <div style={{width: "100%", marginTop:"15px"}}>
+                        <iframe title="map" width="100%" height="700" id="gmap_canvas" src="https://maps.google.com/maps?q=sukhbaatar%20squere&t=&z=13&ie=UTF8&iwloc=&output=embed" frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0"></iframe>
+                    </div>
+                </div>
                 
             </div>
             {/* -------------- Intorduction ---------------------*/}

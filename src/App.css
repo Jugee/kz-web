@@ -11,5 +11,23 @@ body::-webkit-scrollbar-thumb {
   border-radius: 20px;      
 }
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'ChFuturis';
 }
+
+
+
+/* Components content css */
+.ant-steps-item-title {
+  color: white!important;
+  font-weight: 500;
+}
+.ant-steps-item-description {
+  color: white!important; 
+}
+.ant-steps-icon-dot{
+  background-color: #7788c4!important;
+}
+.ant-steps-item-tail::after{
+  background: #7788c4!important
+}
+
